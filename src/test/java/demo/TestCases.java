@@ -40,7 +40,7 @@ public class TestCases {
     @Test
     void testCase01() throws InterruptedException {
         System.out.println("Start Test case: testCase01");
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         //Open URL
         driver.get("https://docs.google.com/forms/d/e/1FAIpQLSep9LTMntH5YqIXa5nkiPKSs283kdwitBBhXWyZdAS-e4CxBQ/viewform");
 
@@ -90,7 +90,7 @@ public class TestCases {
         wrapper.clickAction(dropdown);
 //
 //        //Select option from list
-        Thread.sleep(2000);
+        Thread.sleep(3000);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@role='option']/span")));
         //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='OA0qNb ncFHed QXL7Te']")));
         List<WebElement> titles = driver.findElements(By.xpath("//div[@role='option']/span"));
@@ -107,11 +107,13 @@ public class TestCases {
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@aria-label='Hour']")));
         WebElement hourInput = driver.findElement(By.xpath("//input[@aria-label='Hour']"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",hourInput);
-        wrapper.getCurrentHour(hourInput);
+//        wrapper.getCurrentHour(hourInput);
+        hourInput.sendKeys("07");
 
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@aria-label='Minute']")));
         WebElement minuteInput = driver.findElement(By.xpath("//input[@aria-label='Minute']"));
-        wrapper.getCurrentMinute(minuteInput);
+        //wrapper.getCurrentMinute(minuteInput);
+        minuteInput.sendKeys("30");
 
 //        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[text()='Time']/../following-sibling::div[@role='listbox']")));
 //        WebElement timeFormatDropdown = driver.findElement(By.xpath("//div[text()='Time']/../following-sibling::div[@role='listbox']"));
